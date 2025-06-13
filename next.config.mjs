@@ -1,8 +1,4 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  images: {
-    remotePatterns: [new URL("https://images.contentstack.io/**")],
-  },
-};
+const nextConfig = {};
 
 export default nextConfig;

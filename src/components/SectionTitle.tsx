@@ -1,23 +1,13 @@
-import clsx from "clsx";
-import React, { JSX } from "react";
+import React from 'react';
 
 interface SectionTitleProps {
-  children: React.ReactNode;
-  className?: string;
-  as?: keyof JSX.IntrinsicElements;
+    children: React.ReactElement;
 }
 
-const SectionTitle: React.FC<SectionTitleProps> = ({
-  children,
-  as: Component = "h2",
-  className,
-}) => {
-  const componentClassName = clsx(
-    "text-3xl lg:text-5xl lg:leading-tight font-bold",
-    className,
-  );
-
-  return <Component className={componentClassName}>{children}</Component>;
+const SectionTitle: React.FC<SectionTitleProps> = ({ children }) => {
+    return React.cloneElement(children, {
+        className: children.props.className + " text-3xl lg:text-5xl lg:leading-tight font-bold"
+    });
 };
 
 export default SectionTitle;

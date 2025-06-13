@@ -8,80 +8,36 @@ import Container from "@/components/Container";
 import Section from "@/components/Section";
 import Stats from "@/components/Stats";
 import CTA from "@/components/CTA";
-import { getSiteDetails } from "@/data/siteDetails";
-import { getHero } from "@/data/hero";
-import { getCustomer } from "@/data/customers";
-import { getBenefits } from "@/data/benefits";
-import { getPricing } from "@/data/pricing";
-import { getTestimonial } from "@/data/testimonials";
-import { getFAQ } from "@/data/faq";
-import { getStats } from "@/data/stats";
-import { getCTA } from "@/data/cta";
 
-export async function generateMetadata() {
-  const siteSettings = await getSiteDetails();
-
-  return {
-    title: siteSettings.metaData.title,
-    description: siteSettings.metaData.description,
-  };
-}
-
-const HomePage: React.FC = async () => {
-  const [
-    heroDetails,
-    customer,
-    benefits,
-    pricing,
-    testimonial,
-    faq,
-    stats,
-    cta,
-  ] = await Promise.all([
-    getHero(),
-    getCustomer(),
-    getBenefits(),
-    getPricing(),
-    getTestimonial(),
-    getFAQ(),
-    getStats(),
-    getCTA(),
-  ]);
-
+const HomePage: React.FC = () => {
   return (
     <>
-      <Hero heroDetails={heroDetails} />
-      <Logos customer={customer} />
+      <Hero />
+      <Logos />
       <Container>
-        <Benefits benefits={benefits} />
+        <Benefits />
 
         <Section
           id="pricing"
-          title={pricing.title}
-          description={pricing.description}
+          title="Pricing"
+          description="Simple, transparent pricing. No surprises."
         >
-          <Pricing tiers={pricing.items} />
+          <Pricing />
         </Section>
 
         <Section
           id="testimonials"
-          title={testimonial.heading}
-          description={testimonial.description}
+          title="What Our Clients Say"
+          description="Hear from those who have partnered with us."
         >
-          <Testimonials testimonials={testimonial.items} />
+          <Testimonials />
         </Section>
 
-        <FAQ
-          faqs={faq.items}
-          heading={faq.heading}
-          contact={faq.contact}
-          description={faq.description}
-          subHeading={faq.subHeading}
-        />
+        <FAQ />
 
-        <Stats stats={stats} />
-
-        <CTA ctaDetails={cta} />
+        <Stats />
+        
+        <CTA />
       </Container>
     </>
   );

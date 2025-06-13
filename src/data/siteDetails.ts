@@ -1,52 +1,12 @@
-import API from "@/utils/api";
-import { Asset, Entry } from "./type";
-
-export type SiteDetails = {
-  siteName: string;
-  siteUrl: string;
-  metaData: {
-    title: string;
-    description: string;
-  };
-  language: string;
-  locale: string;
-  siteLogo: string;
-  googleAnalyticsId: string;
-};
-
-type WebConfig = Entry<{
-  logo: Asset;
-  meta_data: {
-    title: string;
-    description: string;
-  };
-  site_url: {
-    title: string;
-    href: string;
-  };
-}>;
-
-export async function getSiteDetails(): Promise<SiteDetails> {
-  try {
-    const { data } = await API.get<WebConfig>(
-      "/content_types/web_config/entries/blt92b14b1963fd3ef4",
-    );
-
-    const webConfigEntry = data.entry;
-
-    return {
-      googleAnalyticsId: "",
-      siteLogo: webConfigEntry.logo.url,
-      language: "",
-      locale: "",
-      metaData: {
-        title: webConfigEntry.meta_data.title,
-        description: webConfigEntry.meta_data.description,
-      },
-      siteName: webConfigEntry.title,
-      siteUrl: webConfigEntry.site_url.href,
-    };
-  } catch (e) {
-    return Promise.reject(e);
-  }
+export const siteDetails = {
+    siteName: 'Finwise',
+    siteUrl: 'https://finwise-omega.vercel.app/',
+    metadata: {
+        title: 'Finwise - Next.js and Tailwind CSS Landing Page Template',
+        description: 'Finwise empowers businesses with cutting-edge technology solutions to drive success and efficiency.',
+    },
+    language: 'en-us',
+    locale: 'en-US',
+    siteLogo: `${process.env.BASE_PATH || ''}/images/logo.png`, // or use a string for the logo e.g. "TechStartup"
+    googleAnalyticsId: '', // e.g. G-XXXXXXX,
 }
