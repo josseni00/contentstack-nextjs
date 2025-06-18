@@ -53,8 +53,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
-        <Script src="https://web.cmp.usercentrics.eu/modules/autoblocker.js" />
-        <script id="usercentrics-cmp" src="https://web.cmp.usercentrics.eu/ui/loader.js" data-draft="true" data-settings-id="ToPAYoIwxGi_Lb" async />
+        <Script src="https://app.secureprivacy.ai/script/684a49a4ba0fdfe83ea1cd03.js" />
       </body>
     </html>
   );
